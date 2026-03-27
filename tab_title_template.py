@@ -6,7 +6,8 @@ def get_tab_title_template(is_active):
     property = "active_tab_title_template" if is_active \
         else "tab_title_template"
 
-    title = "{title if title == '~' else tab.active_wd.split('/')[-1]}"
+    # title = "{title if title == '~' else tab.active_wd.split('/')[-1]}"
+    title = "{title if '/' not in title else tab.active_wd.split('/')[-1]}"
 
     return f'{property} "{bg}<{title}> "' if is_active \
         else f'{property} "{bg} {title}  "'
